@@ -1,13 +1,45 @@
 'use client';
-
+import {
+  useAuthModal,
+  useLogout,
+  useSignerStatus,
+  useUser,
+} from '@account-kit/react';
 import { PostButton } from './components/PostButton';
 
 export default function Home() {
+  const user = useUser();
+  const { openAuthModal } = useAuthModal();
+  const signerStatus = useSignerStatus();
+  const { logout } = useLogout();
+
+  console.log('User:', user);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <PostButton cid="your-cid-here" />
-      </main>
-    </div>
+    <main className="flex min-h-screen flex-col items-center p-24 gap-4 justify-center text-center">
+      {signerStatus.isInitializing ? (
+        <>Loading...</>
+      ) : user ? (
+        <div className="flex flex-col gap-2 p-2">
+          <p className="text-xl font-bold">Success!</p>
+          You're logged in as {user.email ?? 'anon'}.
+          <button
+            className="akui-btn akui-btn-primary mt-6"
+            onClick={() => logout()}
+          >
+            Log out
+          </button>
+          <PostButton cid="demo:cid:hello-world" />
+        </div>
+      ) : (
+        <button
+          className="akui-btn akui-btn-primary"
+          type="button"
+          onClick={openAuthModal}
+        >
+          Login
+        </button>
+      )}
+    </main>
   );
 }
