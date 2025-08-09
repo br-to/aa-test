@@ -3,7 +3,7 @@ import { Providers } from './providers';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Gasless Blog Demo',
+  title: 'AA Test',
 };
 
 export default function RootLayout({
