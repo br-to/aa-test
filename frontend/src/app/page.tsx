@@ -13,8 +13,6 @@ export default function Home() {
   const signerStatus = useSignerStatus();
   const { logout } = useLogout();
 
-  console.log('User:', user);
-
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-4 justify-center text-center">
       {signerStatus.isInitializing ? (

@@ -18,14 +18,7 @@ const config = createConfig(
   },
   {
     auth: {
-      sections: [
-        [{ type: 'email' }],
-        [
-          { type: 'passkey' },
-          { type: 'social', authProviderId: 'google', mode: 'popup' },
-        ],
-      ],
-      addPasskeyOnSignup: true,
+      sections: [[{ type: 'email' }], [{ type: 'external_wallets' }]],
     },
   }
 );

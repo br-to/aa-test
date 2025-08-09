@@ -20,6 +20,13 @@ export function PostButton({ cid }: { cid: string }) {
 
   const { sendUserOperation, isSendingUserOperation } = useSendUserOperation({
     client,
+    onSuccess: ({ hash, request }) => {
+      // [optional] Do something with the hash and request
+      console.log('User operation sent successfully:', {
+        hash,
+        request,
+      });
+    },
   });
 
   return (
