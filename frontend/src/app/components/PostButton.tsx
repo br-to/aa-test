@@ -34,7 +34,7 @@ export function PostButton({ cid }: { cid: string }) {
           uo: { target: POST_BOARD, data, value: BigInt(0) },
         })
       }
-      className="akui-btn akui-btn-link mt-4 disabled:akui-btn-disabled disabled:cursor-not-allowed disabled:opacity-50"
+      className="akui-btn akui-btn-primary mt-4 disabled:akui-btn-disabled disabled:cursor-not-allowed disabled:opacity-50"
     >
       {isLoadingClient
         ? 'ローディング中...'

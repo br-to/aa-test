@@ -21,14 +21,14 @@ export default function Home() {
         <div className="flex flex-col gap-2 p-2">
           <p className="text-xl font-bold">ログイン中</p>
           {user.email ? user.email : user.address}
+          {/* cidは仮のものです。実際のアプリでは適切なCIDを使用してください。 */}
+          <PostButton cid="demo:cid:hello-world" />
           <button
-            className="akui-btn akui-btn-primary mt-6"
+            className="akui-btn akui-btn-link mt-6"
             onClick={() => logout()}
           >
             ログアウト
           </button>
-          {/* cidは仮のものです。実際のアプリでは適切なCIDを使用してください。 */}
-          <PostButton cid="demo:cid:hello-world" />
         </div>
       ) : (
         <button
