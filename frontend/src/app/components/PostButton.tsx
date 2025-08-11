@@ -20,30 +20,27 @@ export function PostButton({ cid }: { cid: string }) {
 
   const { sendUserOperation, isSendingUserOperation } = useSendUserOperation({
     client,
-    onSuccess: ({ hash, request }) => {
+    onSuccess: () => {
       // [optional] Do something with the hash and request
-      console.log('User operation sent successfully:', {
-        hash,
-        request,
-      });
+      alert(`User operation sent!`);
     },
   });
 
   return (
     <button
-      disabled={!client || isSendingUserOperation || isLoadingClient}
+      disabled={isSendingUserOperation || isLoadingClient}
       onClick={() =>
         sendUserOperation({
           uo: { target: POST_BOARD, data, value: BigInt(0) },
         })
       }
-      className="akui-btn akui-btn-secondary mt-4 disabled:akui-btn-disabled disabled:cursor-not-allowed disabled:opacity-50"
+      className="akui-btn akui-btn-link mt-4 disabled:akui-btn-disabled disabled:cursor-not-allowed disabled:opacity-50"
     >
       {isLoadingClient
-        ? 'Loading...'
+        ? 'ローディング中...'
         : isSendingUserOperation
-        ? 'Posting…'
-        : 'Post gas-free'}
+        ? '投稿中...'
+        : '投稿'}
     </button>
   );
 }

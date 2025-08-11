@@ -16,17 +16,18 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-4 justify-center text-center">
       {signerStatus.isInitializing ? (
-        <>Loading...</>
+        <>ローディング中...</>
       ) : user ? (
         <div className="flex flex-col gap-2 p-2">
-          <p className="text-xl font-bold">Success!</p>
-          You're logged in as {user.email ?? 'anon'}.
+          <p className="text-xl font-bold">ログイン中</p>
+          {user.email ? user.email : user.address}
           <button
             className="akui-btn akui-btn-primary mt-6"
             onClick={() => logout()}
           >
-            Log out
+            ログアウト
           </button>
+          {/* cidは仮のものです。実際のアプリでは適切なCIDを使用してください。 */}
           <PostButton cid="demo:cid:hello-world" />
         </div>
       ) : (
@@ -35,7 +36,7 @@ export default function Home() {
           type="button"
           onClick={openAuthModal}
         >
-          Login
+          ログイン
         </button>
       )}
     </main>
